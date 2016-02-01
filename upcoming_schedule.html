@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>                                                                                                                                        Upcoming Schedule | RTX
+        </title>
+        <link rel="shortcut icon" href="img/logo.png" type="img/png">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/schedule_u.css">
+       
+        <link rel="stylesheet" href="css/profile.css">
+        <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+        <script src="js/jquery-1.12.0.min.js" ></script>
+        <script src="js/effects.js" ></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                
+                $(".add").click(function(){
+                        $(this).before($(".truck_timeline").first().clone());            
+                                    
+                });
+                //$( ".pls" ).before( "<p>Test</p>" );
+            });
+        </script>
+        <meta charset="UTF-8">
+        <meta keywords="logistics,freight,cargo,intercity">
+    </head>
+    
+    <body>
+        <header>
+            <img src="img/logo.png" alt="RTX: Road Trasnportation XChange"/>
+            <div id="name">Road <span>Transport Xchange</span></div>
+            
+                <section>
+                     <div id="userId">chirag5624 <i class="fa fa-angle-down"></i></div>
+                     <article id="profile" class="hide">
+                         <div id="profile_email">chirag5624@gmail.com</div>
+                         <div id="profile_info">
+                            <img src="" />   
+                             <div style="">Chirag CHoudhary</div>               
+                         </div>
+                         <div id="profile_options">
+                             <div>Edit Profile</div>
+                             <div>Sign Out</div>
+                         </div>
+                     </article>
+                </section>
+            <i class="fa fa-bell-o"></i>
+                        
+        </header>
+
+        <aside>
+            <ul>
+                <li><a><i class="fa fa-bar-chart"></i> Dashboard</a></li>
+                <li><a><i class="fa fa-truck"></i> Shipment</a></b>
+                    <ul>
+                        <li>Transit </li>
+                        <li>Pending</li>
+                        <li>Completed</li>
+                    </ul>
+                    </a></li>
+                <li><a class="active_title"><i class="fa fa-calendar"> </i> Schedule</a>
+                    <ul>
+                        <li>New Schedule </li>
+                        <li class="active_li">Upcoming Schedule</li>
+                        
+                    </ul>
+                </li>
+                <li><a><i class="fa fa-tags "></i> Quotations</a>
+                    <ul>
+                        <li>Pending </li>
+                        <li>Completed</li>
+                    </ul>
+                </li>
+                    <li><a><i class="fa fa-credit-card"></i> Payment</a>
+                    <ul>
+                        <li>Due Payment </li>
+                        <li>Payment History</li>
+                    </ul>
+                </li>
+            </ul>
+        </aside>
+        <section>
+          <div class="outer_container" style="margin:40px auto;">
+            <div class="inner_container">
+                <div class="inner_container_head">
+
+                        <div>Source</div>
+                        <div>Destination</div>
+                        <div>Truck Type</div>
+                        <div>No. of Trucks</div>
+                </div>
+            </div>
+            <div class="inner_container">
+                <form class="schedule_frm">  
+                    <div class="inner_container_head">
+
+                        <div><input type="text" value="Source"></div>
+                        <div><input type="text" value="Destination"></div>
+                        <div>
+                            <select>
+                                <option>17 ft</option>
+                                <option>53 ft</option>
+                                <option>10 ft</option>
+                            </select>
+                        </div>
+                        <div><input type="text"></div>
+                    </div>
+                    <div class="inner_container_body">
+                        
+                         Tentative Timings: <br>
+                         <div class="truck_timeline">
+                             Time: <input type="time" /> No. of Trucks: <input type="text" />
+                        </div>
+                        <div class="add">+</div>
+                        <input type="submit" value=" Edit " method="post"/>
+                        
+                    </div>
+                  
+   
+                </div>
+            <div class="inner_container">
+                <form class="schedule_frm">  
+                    <div class="inner_container_head">
+
+                        <div><input type="text" value="Source"></div>
+                        <div><input type="text" value="Destination"></div>
+                        <div>
+                            <select>
+                                <option>17 ft</option>
+                                <option>53 ft</option>
+                                <option>10 ft</option>
+                            </select>
+                        </div>
+                        <div><input type="text"></div>
+                    </div>
+                    <div class="inner_container_body">
+                        
+                         Tentative Timings: <br>
+                         Time: <input type="time" /> No. of Trucks: <input type="text" /><br>
+                         <input type="submit" value=" Edit " method="post"/>
+                    </div>
+                  
+   
+                </div>
+            <div class="inner_container">
+                <form class="schedule_frm">  
+                    <div class="inner_container_head">
+
+                        <div><input type="text" value="Source"></div>
+                        <div><input type="text" value="Destination"></div>
+                        <div>
+                            <select>
+                                <option>17 ft</option>
+                                <option>53 ft</option>
+                                <option>10 ft</option>
+                            </select>
+                        </div>
+                        <div><input type="text"></div>
+                    </div>
+                    <div class="inner_container_body">
+                        
+                         Tentative Timings: <br>
+                         Time: <input type="time" /> No. of Trucks: <input type="text" /><br>
+                         <input type="submit" value=" Edit " method="post"/>
+                    </div>
+                  
+   
+                </div>
+          </div>
+        </section>
+    </body>
+</html>
+    

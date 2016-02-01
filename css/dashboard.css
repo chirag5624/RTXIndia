@@ -1,0 +1,12 @@
+.dboard_one_div{
+    display:block;
+    border-right:1px solid black;
+    width:calc(25% - 2px);
+    float:left;
+    float:left;
+    min-width:200px;
+    height:200px;
+}
+div.dboard_one_div:nth-last-of-type(1){
+    border-right:none;
+}

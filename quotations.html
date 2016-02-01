@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>                                                                                                                               RTX : Road Transport Xchange &#8211; Intercity logistics marketplace    
+        <title>                                                                                                                                     Post a Quotation | RTX
         </title>
         <link rel="shortcut icon" href="img/logo.png" type="img/png">
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/profile.css">
+        <link rel="stylesheet" href="css/quotation.css">
+        <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+        <script src="js/jquery-1.12.0.min.js" ></script>
+        <script src="js/effects.js" ></script>
         <meta charset="UTF-8">
         <meta keywords="logistics,freight,cargo,intercity">
     </head>
@@ -13,47 +17,121 @@
     <body>
         <header>
             <img src="img/logo.png" alt="RTX: Road Trasnportation XChange"/>
-            <div id="name">Road Transport Xchange</div>
+            <div id="name">Road <span>Transport Xchange</span></div>
+            
                 <section>
-                     <a href="profile.html">username</a>
-                     <article id="profile">
-                         <div id="profile_email">Email Id</div>
+                     <div id="userId">chirag5624 <i class="fa fa-angle-down"></i></div>
+                     <article id="profile" class="hide">
+                         <div id="profile_email">chirag5624@gmail.com</div>
                          <div id="profile_info">
                             <img src="" />   
-                             <div >Name</div>               
+                             <div style="">Chirag CHoudhary</div>               
                          </div>
                          <div id="profile_options">
                              <div>Edit Profile</div>
                              <div>Sign Out</div>
                          </div>
-                         
-                         
                      </article>
                 </section>
-                
-         
-            
+            <i class="fa fa-bell-o"></i>
+                        
         </header>
-<!--
-       <aside>
-            <ul>
-                <li><a href="main.html">Transit</a></li>
-                <li><a href="shipment.html">Shipment</a></li>
-                <li><a href="schedule.html">Schedule</a></li>
-                
-            </ul>
-        </aside>
--->
+
         <aside>
-            <ul>
-                <li><a href="main.html">Dashboard</a></li>
-                <li><a href="shipment.html">Shipment</a></li>
-                <li><a href="schedule.html">Schedule</a></li>
-                <li><a href="quotations.html">Quotations</a></li>
-                <li><a href="payment.html">Payment</a></li>
+              <ul>
+                <li><a><i class="fa fa-bar-chart"></i> Dashboard</a></li>
+                <li><a><i class="fa fa-truck"></i> Shipment</a></b>
+                    <ul>
+                        <li>Transit </li>
+                        <li>Pending</li>
+                        <li>Completed</li>
+                    </ul>
+                    </a></li>
+                <li><a><i class="fa fa-calendar"> </i> Schedule</a>
+                    <ul>
+                        <li>New Schedule </li>
+                        <li>Upcoming Schedule</li>
+                        
+                    </ul>
+                </li>
+                <li><a class="active_title"><i class="fa fa-tags "></i> Quotations</a>
+                    <ul>
+                        <li class="active_li">New</li>
+                        <li>Pending</li>
+                        <li>Completed</li>
+                    </ul>
+                </li>
+                    <li><a><i class="fa fa-credit-card"></i> Payment</a>
+                    <ul>
+                        <li>Due Payment </li>
+                        <li>Payment History</li>
+                    </ul>
+                </li>
             </ul>
         </aside>
         <section>
+            <form id="frm1" name="quotation_form">
+                <div class="row">
+                    <div class="row_entry">
+                        <label for="source">Source: </label>
+                        <input type="text" id="source" value="Eg. Delhi"/>
+                    </div>
+                    <div class="row_entry">
+                        <label for="dest">Destination: </label>
+                        <input type="text" id="dest"/>
+                    </div>
+                </div>
+                <div class="row">
+                   
+                    <div class="row_entry">
+                        <label for="from_time">From:</label>
+                        <input type="date" id="from_time"/>
+                    </div>
+                    <div class="row_entry">
+                        <label for="to_time">To:</label>
+                        <input type="date" id="to_time"/>
+                    </div>
+                </div>
+                <div class="row">        
+                    <div class="row_entry">
+                        <label for="material"> Material: </label>
+                        <input type="text" id="material"/>
+                    </div>
+                    <div class="row_entry">
+                        <label for="">Truck Type: </label>
+                        <select name="trucks">
+                              <option value="volvo">17 ft</option>
+                              <option value="saab">50 ft</option>
+                              <option value="fiat">Fiat</option>
+                              <option value="audi">Audi</option>
+                        </select>
+                    </div>
+                </div>
+               
+                        
+                <div class="row">
+                    <div class="row_entry" style="width:60%;">
+                        <label for="freq">Frequency:  </label>
+                        <input type="text" id="freq">
+                    
+                        / <select name="period">
+                          <option value="volvo">Day</option>
+                          <option value="saab">Week</option>
+                          <option value="fiat">Month</option>
+                      
+                        </select>
+                    </div>
+                </div>
+                <div class="row">        
+                    <div class="row_entry">
+                        <label for="cost"> Expected price per trip ( in Rs.): </label>
+                        <input type="text" id="cost"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <input type="submit" name="btn1" value="Confirm" /> 
+                </div>
+            </form>
         </section>
     </body>
 </html>

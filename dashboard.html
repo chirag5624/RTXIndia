@@ -5,7 +5,12 @@
         </title>
         <link rel="shortcut icon" href="img/logo.png" type="img/png">
         <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/main2.css">
+        <link rel="stylesheet" href="css/dashboard.css">
         <link rel="stylesheet" href="css/profile.css">
+        <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+        <script src="js/jquery-1.12.0.min.js" ></script>
+        <script src="js/effects.js" ></script>
         <meta charset="UTF-8">
         <meta keywords="logistics,freight,cargo,intercity">
     </head>
@@ -13,61 +18,50 @@
     <body>
         <header>
             <img src="img/logo.png" alt="RTX: Road Trasnportation XChange"/>
-            <div id="name">Road Transport Xchange</div>
+            <div id="name">Road <span>Transport Xchange</span></div>
+            
                 <section>
-                     <a href="profile.html">username</a>
-                     <article id="profile">
-                         <div id="profile_email">Email Id</div>
+                     <div id="userId">chirag5624 <i class="fa fa-angle-down"></i></div>
+                     <article id="profile" class="hide">
+                         <div id="profile_email">chirag5624@gmail.com</div>
                          <div id="profile_info">
                             <img src="" />   
-                             <div >Name</div>               
+                             <div style="">Chirag CHoudhary</div>               
                          </div>
                          <div id="profile_options">
                              <div>Edit Profile</div>
                              <div>Sign Out</div>
                          </div>
-                         
-                         
                      </article>
                 </section>
-                
-         
-            
+            <i class="fa fa-bell-o"></i>
+                        
         </header>
-<!--
-       <aside>
-            <ul>
-                <li><a href="main.html">Transit</a></li>
-                <li><a href="shipment.html">Shipment</a></li>
-                <li><a href="schedule.html">Schedule</a></li>
-                
-            </ul>
-        </aside>
--->
+
         <aside>
             <ul>
-                <li>Dashboard</li>
-                <li>Shipment
+                <li><a><i class="fa fa-bar-chart"></i> Dashboard</a></li>
+                <li><a class="active_title"><i class="fa fa-truck"></i> Shipment</a></b>
                     <ul>
-                        <li>Transit </li>
+                        <li class="active_li">Transit </li>
                         <li>Pending</li>
                         <li>Completed</li>
                     </ul>
                     </a></li>
-                <li>
+                <li><a><i class="fa fa-calendar"> </i> Schedule</a>
                     <ul>
                         <li>New Schedule </li>
                         <li>Upcoming Schedule</li>
                         
                     </ul>
                 </li>
-                <li>Quotations
+                <li><a><i class="fa fa-tags "></i> Quotations</a>
                     <ul>
                         <li>Pending </li>
                         <li>Completed</li>
                     </ul>
                 </li>
-                <li>Payment
+                    <li><a><i class="fa fa-credit-card"></i> Payment</a>
                     <ul>
                         <li>Due Payment </li>
                         <li>Payment History</li>
@@ -75,7 +69,14 @@
                 </li>
             </ul>
         </aside>
-        <section>
+        <section id="sec">
+            <div id="dboard_one">
+                <div class="dboard_one_div"></div>
+                <div class="dboard_one_div"></div>
+                <div class="dboard_one_div"></div>
+                <div class="dboard_one_div"></div>
+            </div>    
+    
         </section>
     </body>
 </html>
