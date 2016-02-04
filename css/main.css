@@ -57,15 +57,21 @@ header article{
     //width:720px;
     height:auto;
     float:right;
-    z-index:1000;
-    position:fixed;
+    z-index:100000;
+    position:absolute;
     right:20px;
     top:55px;
         
 }
-ul li>a{
+header>section{
+    //height:50px;
+    //float:right;
+}
+
+ul a,ul a:visited{
     //float:left;
     text-decoration: none;
+    color:#E7E7E7 ;
 }
 
 aside{
@@ -259,4 +265,9 @@ table tr:nth-child(2n+1){
 .active_li{
     border-left:3px solid white !important;
     background-color:rgba(255, 255, 255, 0.05);
+}
+
+ul>li>ul>li>a{
+    display: block;
+    height: 100%;
 }

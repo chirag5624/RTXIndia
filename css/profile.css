@@ -4,7 +4,7 @@
     height:150px;
     
    // background-color: antiquewhite;
-    webkit-transition: display 2s;
+    -webkit-transition: display 2s;
     font-size:16px;
 }
 #profile_email{

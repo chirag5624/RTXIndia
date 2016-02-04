@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>                                                                                                                               RTX : Road Transport Xchange &#8211; Intercity logistics marketplace    
+        <title>  
+            Dashboard | RTX
         </title>
         <link rel="shortcut icon" href="img/logo.png" type="img/png">
         <link rel="stylesheet" href="css/main.css">
@@ -9,6 +10,9 @@
         <link rel="stylesheet" href="css/dashboard.css">
         <link rel="stylesheet" href="css/profile.css">
         <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+        <style type="text/css">
+            
+        </style>
         <script src="js/jquery-1.12.0.min.js" ></script>
         <script src="js/effects.js" ></script>
         <meta charset="UTF-8">
@@ -21,62 +25,127 @@
             <div id="name">Road <span>Transport Xchange</span></div>
             
                 <section>
-                     <div id="userId">chirag5624 <i class="fa fa-angle-down"></i></div>
-                     <article id="profile" class="hide">
+                     <div id="userId" >chirag5624 <i class="fa fa-angle-down"></i></div>
+                    
+                </section>
+            <i class="fa fa-bell-o"></i>
+                  <article id="profile">
                          <div id="profile_email">chirag5624@gmail.com</div>
                          <div id="profile_info">
                             <img src="" />   
                              <div style="">Chirag CHoudhary</div>               
                          </div>
                          <div id="profile_options">
-                             <div>Edit Profile</div>
+                             <div><a>Edit Profile</a></div>
                              <div>Sign Out</div>
                          </div>
-                     </article>
-                </section>
-            <i class="fa fa-bell-o"></i>
-                        
+                     </article>      
         </header>
 
         <aside>
             <ul>
-                <li><a><i class="fa fa-bar-chart"></i> Dashboard</a></li>
-                <li><a class="active_title"><i class="fa fa-truck"></i> Shipment</a></b>
+                <li><a class="active_title" href="dashboard.html"><i class="fa fa-bar-chart"></i> Dashboard</a></li>
+                <li><a ><i class="fa fa-truck"></i> Shipment</a></b>
                     <ul>
-                        <li class="active_li">Transit </li>
-                        <li>Pending</li>
-                        <li>Completed</li>
+                        <li><a href="transit_shipments.html">Transit</a> </li>
+                        <li><a href="pending_shipments.html">Pending</a></li>
+                        <li><a href="completed_shipments.html">Completed</a></li>
                     </ul>
                     </a></li>
                 <li><a><i class="fa fa-calendar"> </i> Schedule</a>
                     <ul>
-                        <li>New Schedule </li>
-                        <li>Upcoming Schedule</li>
+                        <li><a href="new_schedule.html">New Schedule </a></li>
+                        <li><a href="upcoming_schedule.html">Upcoming Schedule</a></li>
                         
                     </ul>
                 </li>
                 <li><a><i class="fa fa-tags "></i> Quotations</a>
                     <ul>
-                        <li>Pending </li>
-                        <li>Completed</li>
+                        <li><a href="pending_quotations.html">Pending</a> </li>
+                        <li><a href="pending_shipments.html">Completed</a></li>
                     </ul>
                 </li>
                     <li><a><i class="fa fa-credit-card"></i> Payment</a>
                     <ul>
-                        <li>Due Payment </li>
-                        <li>Payment History</li>
+                        <li> <a href="due_payment.html">Due Payment</a> </li>
+                        <li><a href="payment_history.html">Payment History</a></li>
                     </ul>
                 </li>
             </ul>
         </aside>
         <section id="sec">
+             
             <div id="dboard_one">
-                <div class="dboard_one_div"></div>
-                <div class="dboard_one_div"></div>
-                <div class="dboard_one_div"></div>
-                <div class="dboard_one_div"></div>
-            </div>    
-    
+                <div class="dboard_one_div">
+                    <div class="display">
+                        <div id="total">163</div>
+                    </div>
+                    <div class="label">
+                        Total Shipments
+                    </div>
+                </div>
+                <div class="dboard_one_div">
+                    <div class="display">
+                        <div id="transit">19</div>
+                    </div>
+                    <div class="label"> 
+                        Transit Shipments
+                    </div>
+                </div>
+                <div class="dboard_one_div">
+                    <div class="display">
+                        <div id="delivered">141</div>
+                    </div>
+                    <div class="label">
+                        Delivered Shipments
+                    </div>
+                </div>
+                <div class="dboard_one_div">
+                    <div class="display">
+                        <div id="pending">03
+                        </div>
+                    </div>
+                    <div class="label">
+                        Pending Shipments
+                    </div>
+                    
+                </div>    
+             </div>
+            <div id="dboard_two">
+                <div class="dboard_two_div">
+                    <div class="display">
+                        <div id="total">163</div>
+                    </div>
+                    <div class="label">
+                        contracts till date
+                    </div>
+                </div>
+                <div class="dboard_two_div">
+                    <div class="display">
+                        <div id="total">163</div>
+                    </div>
+                    <div class="label">
+                        contracts running
+                    </div>
+                </div>
+                
+                <div class="dboard_two_div">
+                    <div class="display">
+                        <div id="total">163</div>
+                    </div>
+                    <div class="label">
+                        shipments till date
+                    </div>
+                </div>
+                <div class="dboard_two_div">
+                    <div class="display">
+                        <div id="total">163</div>
+                    </div>
+                    <div class="label">
+                        shipments posted till date
+                    </div>
+                </div>
+            </div>
         </section>
     </body>
 </html>
