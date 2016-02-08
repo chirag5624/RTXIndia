@@ -1,0 +1,1 @@
+[{"id":2,"source":"Delhi","destination":"Banglore","truck_type":"FT321","material":"Cement","frequency":"Weekly","number_of_trucks_min":5,"number_of_trucks_max":7},{"id":1,"source":"Dehi","destination":"Jaipur","truck_type":"FT22","material":"Chocolate","frequency":"Weekly","number_of_trucks_min":5,"number_of_trucks_max":10}]
