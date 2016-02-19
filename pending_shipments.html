@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>                                                                                                                                     Transit Shipments | RTX
+        <title>                                                                                                                                     Pending Shipments | RTX
         </title>
         <link rel="shortcut icon" href="img/logo.png" type="img/png">
         <link rel="stylesheet" href="css/main.css">
@@ -23,9 +23,12 @@
                 overflow-wrap: break-word;
                 text-overflow: ellipsis;
                // border-right: 1px solid black;
+                
                
             }
-           
+             tr{
+                 cursor:default !important;
+             }
              tr>:first-child{
                  width:10%;
                //  border-right: 1px solid black;
@@ -39,6 +42,7 @@
              tbody{
                  height:90%;
                  //border: 1px solid black;
+                 //cursor:default !important;
              }
         </style>
         <script src="js/jquery-1.12.0.min.js" ></script>
@@ -46,14 +50,17 @@
         <script src="js/jquery.lightbox_me.js" type="text/javascript"></script>
         
         <script type="text/javascript">
-           /*$(document).ready(function(){
-                $("section>table tr").click(function(e){
-                    $("#a").lightbox_me(); 
-                   //    $("#a").trigger('reposition');
-                    e.preventDefault();
-            });
-               $("#a").css("display","none");
-           });*/
+           $(document).ready(function(){
+               $.getJSON("pending.json",function(json){
+                   $.each(json,function(index,value){
+                       console.log(json[index].schedule_timestamp.indexOf('T'));
+                       var e="<tr><td>"+json[index].shipment_id+"</td>"+"<td>"+json[index].shipment_name+"</td>"+"<td>"+json[index].source+"</td>"+"<td>"+json[index].destination+"</td>"+"<td>"+json[index].schedule_timestamp.slice(0,json[index].schedule_timestamp.indexOf('T'))+"</td>"+"<td>"+json[index].shipment_time_expected+"</td>"+"<td>"+json[index].truck_type+"</td></tr>";
+                       $("tbody").append(e);
+                       console.log(e);
+                   });
+                   
+               } );
+           });
         </script>
         <meta charset="UTF-8">
         <meta keywords="logistics,freight,cargo,intercity">
@@ -69,8 +76,8 @@
                      <article id="profile" class="hide">
                          <div id="profile_email">chirag5624@gmail.com</div>
                          <div id="profile_info">
-                            <img src="" />   
-                             <div style="">Chirag CHoudhary</div>               
+                            <img src="" id="profile_pic"/>   
+                             <div id="profile_name">Chirag Choudhary</div>               
                          </div>
                          <div id="profile_options">
                              <div>Edit Profile</div>
@@ -85,13 +92,13 @@
     <aside>
             <ul>
                 <li><a href="dashboard.html"><i class="fa fa-bar-chart"></i> Dashboard</a></li>
-                <li ><a class="active_title"><i class="fa fa-truck"></i> Shipment</a></b>
+                <li ><a class="active_title"><i class="fa fa-truck"></i> Shipment</a>
                     <ul>
                         <li><a href="transit_shipments.html">Transit</a> </li>
                         <li class="active_li"><a  href="pending_shipments.html">Pending</a></li>
                         <li><a href="completed_shipments.html">Completed</a></li>
                     </ul>
-                    </a></li>
+                    </li>
                 <li><a><i class="fa fa-calendar"> </i> Schedule</a>
                     <ul>
                         <li><a href="new_schedule.html">New Schedule </a></li>
@@ -130,6 +137,7 @@
                 </tr>
                 </thead>
                 <tbody>
+<!--
                  <tr>
                      <td>123456789</td>
                      <td>Chirag</td>
@@ -166,6 +174,7 @@
                      <td>Status</td>
                     <td>Status</td>
                 </tr>
+-->
                 </tbody>
             </table>
             

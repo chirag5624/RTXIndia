@@ -1,0 +1,33 @@
+[
+  {
+    "source": "Delhi",
+    "truck_required": {
+      "truck_required": [
+        {
+          "truck_timings": "09:00",
+          "number_of_trucks": "3"
+        }
+      ]
+    },
+    "quotation_id": 6,
+    "schedule_id": 13,
+    "date": "2016-01-30",
+    "destination": "Jaipur",
+    "truck_type": "FT22"
+  },  {
+    "source": "Delhi",
+    "truck_required": {
+      "truck_required": [
+        {
+          "truck_timings": "09:00",
+          "number_of_trucks": "3"
+        }
+      ]
+    },
+    "quotation_id": 6,
+    "schedule_id": 13,
+    "date": "2016-01-30",
+    "destination": "Roorkee",
+    "truck_type": "FT300"
+  }
+]

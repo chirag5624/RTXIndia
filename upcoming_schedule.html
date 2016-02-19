@@ -6,20 +6,92 @@
         <link rel="shortcut icon" href="img/logo.png" type="img/png">
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/schedule_u.css">
-       
         <link rel="stylesheet" href="css/profile.css">
+        <style>
+            .outer_container{
+                width:90%;
+                margin:40px auto;
+            }
+             .inner_container_head{
+                margin: 5px 0px 5px 0px;
+            }
+            input{
+                height: 31px;
+            }
+            .button{
+                //float:right;
+                margin:10px auto;
+            }
+            select{
+                -webkit-appearance: none    ;
+                -moz-appearance: none;
+                appearance: none;
+                //padding: 2px 30px 2px 2px;
+                //border: none;
+            }
+            
+        </style>
         <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
         <script src="js/jquery-1.12.0.min.js" ></script>
         <script src="js/effects.js" ></script>
         <script type="text/javascript">
+            function sendData() {
+                var data;
+                    $.ajax({
+                        url: 'http://rtxindia.herokuapp.com/users/1/schedule/upcoming/13/edit/',
+                        type: 'POST',
+                        data: {"json": JSON.stringify({
+                            "shipment_name":"ship",
+                            "date":"2017-01-01",
+                            "truck_data":[{
+                              
+                                "number_of_trucks":"10",
+                                "truck_timings":"08:00"
+                            }]
+                        })},
+                        dataType:'json'    
+                    });
+                        
+            }
             $(document).ready(function(){
-                
-                $(".add").click(function(){
-                        $(this).before($(".truck_timeline").first().clone());            
-                                    
-                });
-                //$( ".pls" ).before( "<p>Test</p>" );
+               
+               var json;
+                $.getJSON("schedule.json",function(data){
+                    
+                    json=data;
+                    $.each(json, function(i,v){
+                            console.log(1);
+                          var e="<div class='inner_container'><form method='post' action='http://rtxindia.herokuapp.com/users/1/schedule/upcoming/"+json[i].schedule_id+"/edit/'  class='frm'>                       <div class='inner_container_head'><div><input type='text' value="+json[i].source+"></div><div><input type='text' value="+json[i].destination+"></div><div><select name=''><option value='17 ft.'>17 ft</option>                                    <option value='17 ft.'>53 ft</option><option value='17 ft.'>10 ft</option></select></div><div><input type='text' name='' value=''></div></div>      <div class='inner_container_body'><div class='schedule_date'>Date: <input type='date' value="+json[i].date+">                            </div>Tentative Timings: ";
+                        var trucks=json[i].truck_required.tr        uck_required;
+                        $.each(trucks,function(index,val){
+                            e=e+"<div class='truck_timeline'>Time:  <input type='time' value="+trucks[index].truck_timings+" style='margin-right:20px;display: inline-block;'/> Number of Trucks: <input type='text' style='width:40px;display: inline-block;' value="+trucks[index].number_of_trucks+"></div></div>" ;
+                            console.log("trucks: "+ trucks[index].number_of_trucks);   
+                        });
+                        
+                        
+                       
+                        e=e+"<input type='submit' value=' Edit ' class='button'/>   </form>            </div>"; 
+                        $(".outer_container").append(e);
+                    console.log(e);     
+                    });
+                    $(".inner_container_head input,.inner_container_body input").add($("select")).addClass("readOnly").attr("disabled","disabled");
+                     $(".button").one("click",function(e){
+                         e.preventDefault();
+                         $(this).prop("value","  Confirm  ");
+                         var index=$(".button").index(this);
+                       
+                        console.log(index);             
+                        $(".inner_container_body input").removeClass("readOnly").removeAttr("disabled");
+                         $(".button").click(function(){
+                             sendData();
+                         });
+                     });
+         });
+                    
             });
+            
+                        
+               
         </script>
         <meta charset="UTF-8">
         <meta keywords="logistics,freight,cargo,intercity">
@@ -50,14 +122,14 @@
 
        <aside>
             <ul>
-                <li><a class="active_title" href="dashboard.html"><i class="fa fa-bar-chart"></i> Dashboard</a></li>
-                <li><a ><i class="fa fa-truck"></i> Shipment</a></b>
+                <li><a  href="dashboard.html"><i class="fa fa-bar-chart"></i> Dashboard</a></li>
+                <li><a ><i class="fa fa-truck"></i> Shipment</a>
                     <ul>
                         <li><a href="transit_shipments.html">Transit</a> </li>
                         <li><a href="pending_shipments.html">Pending</a></li>
                         <li><a href="completed_shipments.html">Completed</a></li>
                     </ul>
-                    </a></li>
+                    </li>
                 <li><a class="active_title"><i class="fa fa-calendar"> </i> Schedule</a>
                     <ul>
                         <li><a href="new_schedule.html">New Schedule </a></li>
@@ -68,7 +140,7 @@
                 <li><a><i class="fa fa-tags "></i> Quotations</a>
                     <ul>
                         <li><a href="pending_quotations.html">Pending</a> </li>
-                        <li><a href="pending_shipments.html">Completed</a></li>
+                        <li><a href="quotations_completed.html">Completed</a></li>
                     </ul>
                 </li>
                     <li><a><i class="fa fa-credit-card"></i> Payment</a>
@@ -80,7 +152,7 @@
             </ul>
         </aside>
         <section>
-          <div class="outer_container" style="margin:40px auto;">
+          <div class="outer_container">
             <div class="inner_container">
                 <div class="inner_container_head">
 
@@ -90,82 +162,7 @@
                         <div>No. of Trucks</div>
                 </div>
             </div>
-            <div class="inner_container">
-                <form class="schedule_frm">  
-                    <div class="inner_container_head">
-
-                        <div><input type="text" value="Source"></div>
-                        <div><input type="text" value="Destination"></div>
-                        <div>
-                            <select>
-                                <option>17 ft</option>
-                                <option>53 ft</option>
-                                <option>10 ft</option>
-                            </select>
-                        </div>
-                        <div><input type="text"></div>
-                    </div>
-                    <div class="inner_container_body">
-                        
-                         Tentative Timings: <br>
-                         <div class="truck_timeline">
-                             Time: <input type="time" /> No. of Trucks: <input type="text" />
-                        </div>
-                        <div class="add">+</div>
-                        <input type="submit" value=" Edit " method="post"/>
-                        
-                    </div>
-                  
-   
-                </div>
-            <div class="inner_container">
-                <form class="schedule_frm">  
-                    <div class="inner_container_head">
-
-                        <div><input type="text" value="Source"></div>
-                        <div><input type="text" value="Destination"></div>
-                        <div>
-                            <select>
-                                <option>17 ft</option>
-                                <option>53 ft</option>
-                                <option>10 ft</option>
-                            </select>
-                        </div>
-                        <div><input type="text"></div>
-                    </div>
-                    <div class="inner_container_body">
-                        
-                         Tentative Timings: <br>
-                         Time: <input type="time" /> No. of Trucks: <input type="text" /><br>
-                         <input type="submit" value=" Edit " method="post"/>
-                    </div>
-                  
-   
-                </div>
-            <div class="inner_container">
-                <form class="schedule_frm">  
-                    <div class="inner_container_head">
-
-                        <div><input type="text" value="Source"></div>
-                        <div><input type="text" value="Destination"></div>
-                        <div>
-                            <select>
-                                <option>17 ft</option>
-                                <option>53 ft</option>
-                                <option>10 ft</option>
-                            </select>
-                        </div>
-                        <div><input type="text"></div>
-                    </div>
-                    <div class="inner_container_body">
-                        
-                         Tentative Timings: <br>
-                         Time: <input type="time" /> No. of Trucks: <input type="text" /><br>
-                         <input type="submit" value=" Edit " method="post"/>
-                    </div>
-                  
-   
-                </div>
+        
           </div>
         </section>
     </body>

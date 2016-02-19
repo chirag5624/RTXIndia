@@ -2,9 +2,9 @@
 #profile{
     width:240px;
     height:150px;
-    
+   // box-shadow:0 2px 8px rgba(0,0,0,0.3);
    // background-color: antiquewhite;
-    -webkit-transition: display 2s;
+    -webkit-transition: height .5s;
     font-size:16px;
 }
 #profile_email{
@@ -32,12 +32,12 @@
    // background-color: firebrick;
 }
 #profile_info>div{
-    float:left;
+    //float:left;
     margin:10px;
 }
 profile_options{
     width:100%;
-    float:left;
+   // float:left;
 }
 
 #profile_options div{

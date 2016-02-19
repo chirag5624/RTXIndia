@@ -1,1 +1,14 @@
-[{"schedule_timestamp": "2016-02-05T10:10:12.115Z", "truck_type": "FT22", "tracking_status": "10", "schedule_id": 1, "shipment_time_expected": "2016-02-02T08:03:19Z", "shipment_name": "Xhocolae", "destination": "Jaipur", "shipment_id": 2, "source": "Dehi", "quotation_id": 1}]
+[
+  {
+    "schedule_timestamp": "2016-02-05T10:10:12.115Z",
+    "truck_type": "FT22",
+    "tracking_status": "10",
+    "schedule_id": 1,
+    "shipment_time_expected": "2016-02-02T08:03:19Z",
+    "shipment_name": "Xhocolae",
+    "destination": "Jaipur",
+    "shipment_id": 2,
+    "source": "Dehi",
+    "quotation_id": 1
+  }
+]

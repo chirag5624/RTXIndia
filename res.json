@@ -1,1 +1,52 @@
-[{"id":2,"source":"Delhi","destination":"Banglore","truck_type":"FT321","material":"Cement","frequency":"Weekly","number_of_trucks_min":5,"number_of_trucks_max":7},{"id":1,"source":"Dehi","destination":"Jaipur","truck_type":"FT22","material":"Chocolate","frequency":"Weekly","number_of_trucks_min":5,"number_of_trucks_max":10}]
+[
+  {
+    "id": 5,
+    "source": "Delhi",
+    "destination": "jaipur",
+    "truck_type": "17 ft.",
+    "material": "sand",
+    "frequency": "Daily",
+    "number_of_trucks_min": 3,
+    "number_of_trucks_max": 3
+  },
+  {
+    "id": 1,
+    "source": "Dehi",
+    "destination": "Jaipur",
+    "truck_type": "FT22",
+    "material": "Chocolate",
+    "frequency": "Weekly",
+    "number_of_trucks_min": 5,
+    "number_of_trucks_max": 10
+  },
+  {
+    "id": 6,
+    "source": "Delhi, India",
+    "destination": "jaipur",
+    "truck_type": "17 ft.",
+    "material": "sand",
+    "frequency": "Daily",
+    "number_of_trucks_min": 3,
+    "number_of_trucks_max": 3
+  },
+  {
+    "id": 7,
+    "source": "Delhi, India",
+    "destination": "jaipur,idia",
+    "truck_type": "17 ft.",
+    "material": "sand",
+    "frequency": "Daily",
+    "number_of_trucks_min": 3,
+    "number_of_trucks_max": 3
+  },
+  {
+    "id": 8,
+    "source": "delhi",
+    "destination": "Jaipur, Rajasthan, India",
+    "truck_type": "17 ft.",
+    "material": "sand",
+    "frequency": "Daily",
+    "number_of_trucks_min": 3,
+    "number_of_trucks_max": 3
+  }
+]

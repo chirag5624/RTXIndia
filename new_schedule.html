@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>                                                                                                                               RTX : Road Transport Xchange &#8211; Intercity logistics marketplace    
+        <title>                                                                                                                         New Schedule | RTX
         </title>
         <link rel="shortcut icon" href="img/logo.png" type="img/png">
         <link rel="stylesheet" href="css/main.css">
@@ -9,21 +9,137 @@
         <link rel="stylesheet" href="css/schedule.css">
         <link rel="stylesheet" href="css/profile.css">
         <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+        <style type="text/css">
+            .inner_container_head{
+                margin: 5px 0px 5px 0px;
+            }
+            input{
+                height: 31px;
+            }
+            .button{
+                margin:100px auto;
+            }
+            select{
+                -webkit-appearance: none    ;
+                -moz-appearance: none;
+                appearance: none;
+                
+            }
+            .add_date{
+                display: inline;
+                cursor:pointer;
+            }
+        </style>
         <script src="js/jquery-1.12.0.min.js" ></script>
         <script src="js/effects.js" ></script>
         <script type="text/javascript">
-            $(document).ready(function(){
+             function sendData() {
+                    $.ajax({
+                        url: 'http://rtxindia.herokuapp.com/users/1/quotations/bid_confirmed/6/schedule/',
+                        type: 'POST',
+                        data: {json : JSON.stringify({
+                              shipment_name: "ship",
+                              date: "1994-12-05",
+                              truck_data: [
+                                {
+                                  number_of_trucks: "100",
+                                  truck_timings: "03: 00"
+                                }
+                              ]
+                            })
+                               
+                              },
+                        dataType: 'json'
+                    });
+                    console.log("send");
+             
+             }
+          
                 
-                $(".add").click(function(){
-                        $(this).before($(".truck_timeline").first().clone());            
-                                    
+                $(document).ready(function(){
+                   var index=0;
+                   $.getJSON( "./bid_confirmed.json",function( json ) {
+                       $.each(json,function(index,vaue){
+                        console.log( "source: " + json[index].id +"\n");    
+                        var e=" <div class='schedule_read'>"+json[index].source+"<i class='fa fa-long-arrow-right fa-lg' style='opacity:0.5'></i>"+json[index].destination+"<br>Price: "+json[index].final_bid+"<br>Truck Type: "+json[index].truck_type;
+                        $("#left_new_schedule").append(e);   
+                       }); 
+                        $(".schedule_read").each(function(i,v){
+                            
+                            $(this).click(function(c){
+                                $(this).css("box-shadow","2px 1px 1px 1px lightgrey,2px 4px 4px 1px lightgrey");
+                                text="";
+                                console.log(i);   
+                                text="<div class='inner_container'><div class='inner_container_head'><div><input type='text' value="+json[i].source+"></div><div><input type='text' value="+json[i].destination+"></div><div><input type='text' value="+json[i].truck_type+"></div><div><input type='number' name='total_trucks' placeholder='1 ' min='0' ></div></div>      <div class='inner_container_body'><div class='schedule_date'>Date: <input type='date' value=''>"; 
+                                
+                                 var trucks=json[i].truck_required.truck_required;
+                                var t="<div class='truck_timeline'>Time:  <input type='time' value="+trucks[index].truck_timings+" style='margin-right:20px;display: inline-block;'/> Number of Trucks: <input type='number' min='0' pattern='^[0-9]' style='width:40px;display: inline-block;' value='1' name='number_of_trucks' required></div>";
+                                $.each(trucks,function(index,val){
+                                    text=text+t+"</div>" ;
+                                    console.log("trucks: "+ trucks[index].number_of_trucks);   
+                                });
+                                text=text+"<div class='add_time'>+ add another time</div></div>"; 
+                                $(".add_date").before(text);
+                                $(".add_time").click(function(){
+                                        $(this).before(t); 
+                                         
+                                        $("input[name='number_of_trucks']").change(function(){
+                                           var sum=0;
+                                           $("input[name='number_of_trucks']").each(function(i,v){
+                                               sum+=parseInt($(this).val());
+                                           });
+                                       $("input[name='total_trucks']").val(sum);    
+                                    });
+                                });
+                                $(".add_date").click(function(cc){
+                                    $(".add_date").before(text);
+                                    console.log("ee");
+                                    $(".add_time").click(function(){
+                                        
+                                        $(this).before(t); 
+                                        $("input[name='number_of_trucks']").change(function(){
+                                       var sum=0;
+                                       $("input[name='number_of_trucks']").each(function(i,v){
+                                           sum+=parseInt($(this).val());
+                                       });
+                                       $("input[name='total_trucks']").val(sum);
+                                   });
+                                    });
+                                    $(".inner_container_head input").add("select").attr("disabled",true).addClass("readOnly");
+                                    $(".inner_container_head>div:last-child input").removeClass("readOnly").removeAttr("disabled");               
+                                    $("input[name='number_of_trucks']").change(function(){
+                           var sum=0;
+                           $("input[name='number_of_trucks']").each(function(i,v){
+                               sum+=parseInt($(this).val());
+                           });
+                           $("input[name='total_trucks']").val(sum);
+                       });
+                                });
+                                
+                            });
+                            
+                            
+                        });
+                       $(".schedule_read")[0].click();
+                       $(".inner_container_head input").add("select").attr("disabled",true).addClass("readOnly");
+                       $(".inner_container_head>div:last-child input").removeClass("readOnly").removeAttr("disabled"); 
+                       $("input[name='number_of_trucks']").change(function(){
+                           var sum=0;
+                           $("input[name='number_of_trucks']").each(function(i,v){
+                               sum+=parseInt($(this).val());
+                           });
+                           $("input[name='total_trucks']").val(sum);
+                       });
+                
+            });
+                
+                
+                
+             
+               
+                $("#btn1").click(function(){
+                 //  sendData();                   
                 });
-                
-                $("input").add("select").attr("disabled",true).addClass("readOnly");
-                
-                $("select").attr("disabled",true);
-                //$("select").attr("readonly","true");
-                //$( ".pls" ).before( "<p>Test</p>" );
             });
         </script>
         <meta charset="UTF-8">
@@ -49,23 +165,24 @@
                          </div>
                      </article>
                 </section>
-            <i class="fa fa-bell-o"></i>
+<!--            <i class="fa fa-bell-o"></i>-->
+            <div name="post_quote">Post a Quote</div>
                         
         </header>
 
         <aside>
             <ul>
-                <li><a class="active_title" href="dashboard.html"><i class="fa fa-bar-chart"></i> Dashboard</a></li>
-                <li><a ><i class="fa fa-truck"></i> Shipment</a></b>
+                <li><a href="dashboard.html"><i class="fa fa-bar-chart"></i> Dashboard</a></li>
+                <li><a ><i class="fa fa-truck"></i> Shipment</a>
                     <ul>
                         <li><a href="transit_shipments.html">Transit</a> </li>
                         <li><a href="pending_shipments.html">Pending</a></li>
                         <li><a href="completed_shipments.html">Completed</a></li>
                     </ul>
-                    </a></li>
-                <li><a><i class="fa fa-calendar"> </i> Schedule</a>
+                    </li>
+                <li><a class="active_title"><i class="fa fa-calendar"> </i> Schedule</a>
                     <ul>
-                        <li><a href="new_schedule.html">New Schedule </a></li>
+                        <li class="active_li"><a href="new_schedule.html">New Schedule </a></li>
                         <li><a href="upcoming_schedule.html">Upcoming Schedule</a></li>
                         
                     </ul>
@@ -73,7 +190,7 @@
                 <li><a><i class="fa fa-tags "></i> Quotations</a>
                     <ul>
                         <li><a href="pending_quotations.html">Pending</a> </li>
-                        <li><a href="pending_shipments.html">Completed</a></li>
+                        <li><a href="quotations_completed.html">Completed</a></li>
                     </ul>
                 </li>
                     <li><a><i class="fa fa-credit-card"></i> Payment</a>
@@ -86,110 +203,26 @@
         </aside>
         <section>
             <div id="left_new_schedule">
-                <div class="schedule_read">
-                    Delhi-Surat<br>
-                    Price: Rs. 20,000<br>
-                    Truck Type: 10 ton
-                </div>
-                <div class="schedule_read">
-                    Delhi-Surat<br>
-                    Price: Rs. 25,000<br>
-                    Truck Type: 15 ton
-                </div>
-                <div class="schedule_read">
-                     Delhi-Surat<br>
-                    Price: Rs. 25,000<br>
-                    Truck Type: 15 ton
-                </div>
+               
             </div>
             <div id="right_new_schedule">
                  
-          <div class="outer_container">
-            <div class="inner_container">
-                <div class="inner_container_head">
-
-                        <div>Source</div>
-                        <div>Destination</div>
-                        <div>Truck Type</div>
-                        <div>No. of Trucks</div>
-                </div>
-            </div>
-            <div class="inner_container">
-                <form class="schedule_frm">  
+            <div class="outer_container">
+                <div class="inner_container">
                     <div class="inner_container_head">
 
-                        <div><input type="text" value="Source"></div>
-                        <div><input type="text" value="Destination"></div>
-                        <div>
-                            <select>
-                                <option>17 ft</option>
-                                <option>53 ft</option>
-                                <option>10 ft</option>
-                            </select>
-                        </div>
-                        <div><input type="text"></div>
+                            <div>Source</div>
+                            <div>Destination</div>
+                            <div>Truck Type</div>
+                            <div>No. of Trucks</div>
                     </div>
-                    <div class="inner_container_body">
-                        
-                         Tentative Timings: <br>
-                         <div class="truck_timeline">
-                             Time: <input type="time" value="20:00"/> No. of Trucks: <input type="text" style="width:40px"/>
-                        </div>
-                        <div class="add">+</div>
-                        <input type="submit" value=" Edit " method="post"/>
-                        
-                    </div>
-                  
-   
                 </div>
-            <div class="inner_container">
-                <form class="schedule_frm" method="post">  
-                    <div class="inner_container_head">
-
-                        <div><input type="text" value="Source"></div>
-                        <div><input type="text" value="Destination"></div>
-                        <div>
-                            <select>
-                                <option>17 ft</option>
-                                <option>53 ft</option>
-                                <option>10 ft</option>
-                            </select>
-                        </div>
-                        <div><input type="text" /></div>
-                    </div>
-                    <div class="inner_container_body">
-                        
-                         Tentative Timings: <br>
-                         Time: <input type="time" /> No. of Trucks: <input type="text" /><br>
-                         <input type="submit" value=" Edit "  class="button"/>
-                    </div>
-                  
-   
-                </div>
-            <div class="inner_container">
-                <form class="schedule_frm">  
-                    <div class="inner_container_head">
-
-                        <div><input type="text" value="Source"></div>
-                        <div><input type="text" value="Destination"></div>
-                        <div>
-                            <select>
-                                <option>17 ft</option>
-                                <option>53 ft</option>
-                                <option>10 ft</option>
-                            </select>
-                        </div>
-                        <div><input type="text"></div>
-                    </div>
-                    <div class="inner_container_body">
-                        
-                         Tentative Timings: <br>
-                         Time: <input type="time" /> No. of Trucks: <input type="text" /><br>
-                         <input type="submit" value=" Edit " method="post"/>
-                    </div>
-                  
-   
-                </div>
+                    <form class="schedule_frm"  >  
+                       
+                        <div class="add_date" >+<span> add schedule for another date</span></div>
+                        <input type="submit" value=" Submit " class="button" id="btn1"/>
+                </form>
+                
           </div>
         
             </div>

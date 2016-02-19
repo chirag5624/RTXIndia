@@ -85,7 +85,6 @@ aside{
     margin: 0px 0px 0px 0px;
 }
 
-
 aside>ul>li>a{
     //padding:0px 10px;
     //width:100%;
@@ -106,20 +105,22 @@ aside>ul li{
     vertical-align: baseline;
     list-style: none;
     font-size:16px;
+    transition: border-right 0.5s ease;
+    -webkit-transition: border-right 0.5s ease;
     
 }
 
 
 aside>ul li>ul{
-  //  color:green;
-   display:none;
-    transition: display 1s ease;
+    opacity: 0; 
+    height: 0;
+    overflow: hidden;
+    transition: opacity 0.5s ease;
     width:100%;
     margin:5px 0px 0px 0px;
-    //padding:0px;
-   //background-color:darkturquoise;
-    transition: display 1s ease;
-    -webkit-transition: display 1s ease;
+
+
+    -webkit-transition: opacity 0.3s ease;
     
 }
 aside>ul li>ul>li{
@@ -137,18 +138,25 @@ aside>ul li>ul>li{
 aside>ul>li:hover{
     border-right:5px solid #1ABB9C;
     cursor: pointer;
-    -webkit-transition: border-right 1s ease;
-    transition: border-right 0.5s ease;
+    
 }
 
 aside>ul li>ul>li:hover{
     border-left:3px solid #E7E7E7;
 }
 a.active_title+ul{
-   display:block !important;
+   //display:block !important;
+     opacity: 1; 
+    height: 100%;
     //background-color: antiquewhite;
     
 }
+div[name='post_quote']{
+    display: inline-block;
+    float: right;
+    margin: 15px 20px;
+}
+
 body>section{
     //border:10px solid black;
     width:calc(100% - 230px);
@@ -265,8 +273,14 @@ table tr:nth-child(2n+1){
 .active_li{
     border-left:3px solid white !important;
     background-color:rgba(255, 255, 255, 0.05);
+    text-shadow: 0px 0px 1px 0px white;
 }
 
+.active_li a{
+    
+    text-shadow: 0px 0px  white;
+    font-size: 15px;
+}
 ul>li>ul>li>a{
     display: block;
     height: 100%;

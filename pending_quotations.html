@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>                                                                                                                                         Pending Quotations | RTX
+        <title>                                                                                                         Pending Quotations | RTX
         </title>
         <link rel="shortcut icon" href="img/logo.png" type="img/png">
         <link rel="stylesheet" href="css/main.css">
         
         <link rel="stylesheet" href="css/schedule.css">
+        
         <link rel="stylesheet" href="css/profile.css">
         <style>
             #left_new_schedule{
@@ -20,10 +21,95 @@
                 width:25%;
                 line-height: 40px;
             }
+            .selected_quotation{
+                box-shadow: 2px 1px 1px 1px lightgreen;
+            }
+            form input{
+                background-color: transparent;
+                  box-shadow: none;
+                border:none;
+                width:100%;
+                font-size:16px;
+                text-align: center;
+            }
+            .button{
+                width:120px !important;
+                box-shadow:0 1px 3px rgba(0,0,0,0.08),inset 0 -1px 4px rgba(151,159,175,0.2);
+                color:white;
+                font-size: 16px;
+                border-radius: 2px;
+                cursor: pointer;
+                height: 35px;
+                background-color: #2ec866;
+                border:1px solid #2ec866 !important;
+                //display: block;
+
+            }
+            .button:hover{
+                box-shadow: 0px 0px 1px 1px darkgreen !important;
+            }
+            
         </style>
         <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
         <script src="js/jquery-1.12.0.min.js" ></script>
         <script src="js/effects.js" ></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                    var json;
+                   $.getJSON( "./res.json",function( data ) {
+                       json=data;
+                       $.each(json,function(index,vaue){
+                     //   console.log( "source: " + json[index].id +"\n");    
+                        var e=" <div class='schedule_read'>"+json[index].source+" <i class='fa fa-long-arrow-right fa-lg' style='opacity:0.5'></i> "+json[index].destination+"<br>Frequency: ";
+                        if(json[index].number_of_trucks_min==json[index].number_of_trucks_max){
+                            e+= json[index].number_of_trucks_min;
+                        }else{
+                            e+= json[index].number_of_trucks_min+" - "+json[index].number_of_trucks_max;
+                        }
+                           e+=" "+json[index].frequency +" <br>Material: "+json[index].material+"&nbsp;&nbsp; Truck Type: "+json[index].truck_type;
+                        $("#left_new_schedule").append(e);   
+                       }); 
+                       var i=0;
+                       $(".schedule_read").click(function(e){
+                            var index=$(".schedule_read").index($(this));
+                           // console.log(index);
+                            var u="http://rtxindia.herokuapp.com/users/1/quotations/pending/"+json[index].id;
+                            console.log(u);
+//                           $(".schedule_read")[0].addClass("selected_quotation");
+//                           i=index;
+//                           $(this).addClass("selected_quotation");
+                           
+                           $("#uid").html("Quotation #"+json[index].id);
+                           $.get("pending_q.json",function(data){
+                               $("tbody").empty();
+                              console.log(data);
+                              $.each(data.details,function(i,v){ 
+                                  var $tr=$("<tr/>");
+                                  $("tbody").append($tr);
+                            var $form=$("<form/>").attr("method","post").attr("action","http://rtxindia.herokuapp.com/users/1/quotations/pending/"+data.quotation_id+"/confirm/"+v.firm_id+"/");
+                                  $form.append(  $("<td/>").html("<input type='text' value='"+data.details[i].name_of_firm+"' name='name_of_firm'/>") );
+                                   $form.append(  $("<td/>").html("<input type='text' value='"+data.details[i].rating+"' name='rating'/>" ) );
+                                   $form.append(  $("<td/>").html("<input type='text' value='"+data.details[i].quote+"' name='quote'/>") );
+                                   $form.append(  $("<td/>").html("<input type='submit' value=' confirm ' class='button' name='btn1'/>") );
+                                  $tr.append($form);
+                                  $("input[type='text']").attr("disabled","disabled").css("color","black");
+                             });
+                               
+                           });
+                           /*$.ajax({
+                                url: "pending_q.json",
+                                type :'GET',
+                                }).done(function() {
+                                console.log(data);
+                           });*/
+                           
+                       });
+                       
+                       $(".schedule_read:first-child").click();
+                    });
+            });
+        
+        </script>
         <meta charset="UTF-8">
         <meta keywords="logistics,freight,cargo,intercity">
     </head>
@@ -54,13 +140,13 @@
         <aside>
             <ul>
                 <li><a href="dashboard.html"><i class="fa fa-bar-chart"></i> Dashboard</a></li>
-                <li><a ><i class="fa fa-truck"></i> Shipment</a></b>
+                <li><a ><i class="fa fa-truck"></i> Shipment</a>
                     <ul>
                         <li><a href="transit_shipments.html">Transit</a> </li>
                         <li><a href="pending_shipments.html">Pending</a></li>
                         <li><a href="completed_shipments.html">Completed</a></li>
                     </ul>
-                    </a></li>
+                    </li>
                 <li><a><i class="fa fa-calendar"> </i> Schedule</a>
                     <ul>
                         <li><a href="new_schedule.html">New Schedule </a></li>
@@ -84,21 +170,7 @@
         </aside>
         <section>
             <div id="left_new_schedule">
-                <div class="schedule_read">
-                    Delhi <i class="fa fa-long-arrow-right fa-lg" style="opacity:0.5"></i> Surat<br>
-                    Frequency (No. of trucks/week): 03<br>
-                    Material: Sand  &nbsp;&nbsp; Truck Type: 10 ton
-                </div>
-                <div class="schedule_read">
-                    Delhi <i class="fa fa-long-arrow-right fa-lg"></i> Surat<br>
-                    Frequency (No. of trucks/week): 02<br>
-                    Material: Sand  &nbsp;&nbsp; Truck Type: 5 ton
-                </div>
-                <div class="schedule_read">
-                    Patna <i class="fa fa-long-arrow-right fa-lg"></i> Surat<br>
-                    Frequency (No. of trucks/week): 03<br>
-                    Material: Sand  &nbsp;&nbsp; Truck Type: 15 ton
-                </div>
+                
             </div>
             <div id="right_new_schedule">
                 <div id="uid"># 12345172</div>
@@ -109,34 +181,16 @@
                                 <th>Transporter Name</th>
                                 <th>Rating </th>
                                 <th>Quote(Rs.)</th>
-                                <th>Confirm</th>
+                                <th>Confirm Bid</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>efefef</td>
-                                <td>4.7</td>
-                                <td>Rs.10,100</td>
-                                <td><div id="confirm">Confirm</div></td>
+                                <form name="frm1" method="post" action="http://rtxindia.herokuapp.com/users/1/quotations/pending/6/confirm/2/">
+
+                                </form>
                             </tr>
-                            <tr>
-                                <td>efefef</td>
-                                <td>4.7</td>
-                                <td>Rs.10,100</td>
-                                <td><div id="confirm">Confirm</div></td>
-                            </tr>
-                            <tr>
-                                <td>efefef</td>
-                                <td>4.7</td>
-                                <td>Rs.10,100</td>
-                                <td><div id="confirm">Confirm</div></td>
-                            </tr>
-                            <tr>
-                                <td>efefef</td>
-                                <td>4.7</td>
-                                <td>Rs.10,100</td>
-                                <td><div id="confirm">Confirm</div></td>
-                            </tr>
+                           
                         </tbody>
                     </table>
                 

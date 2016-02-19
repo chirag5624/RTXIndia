@@ -1,8 +1,4 @@
-.outer_container{
-    //width:80%;
-    //margin:50px auto;
-    //border: 1px solid black;
-}
+
 .inner_container{
     width:100%;
     margin-bottom:20px;
@@ -10,7 +6,7 @@
     
 }
 form {
-    margin:20px 0px;
+   // margin:20px 0px;
 }
 
 .inner_container_head,.inner_container_body{
@@ -24,8 +20,8 @@ form {
     text-align: center;
     
 }
-.inner_container:first-child{
-    background-color: grey;
+.outer_container>.inner_container:first-child{
+    background-color: lightgrey;
     font-weight: 600;
     
 }
@@ -44,13 +40,16 @@ form {
    // background-color: lightgrey;
     padding:10px;
 }
-.add{
-    background-color: aliceblue;
-    width:20px;
+.add_time{
+   // background-color: aliceblue;
+    width:150px;
     padding:0px 0px 0px 5px;
     height:20px;
+    font-size: 12px;
     cursor: pointer;
-    border:1px solid black;
+    font-weight: 600;
+    //border:1px solid black;
+    display: inline-block;
 }
 input,select{
     height: 31px;
@@ -62,7 +61,7 @@ input,select{
     border:1px solid #dddddd !important;
     //padding:10px;
     text-align: center;
-    font-size: 15px;
+    font-size: 16px;
     
 }
 input:focus,select:focus{
@@ -77,19 +76,33 @@ input:focus,select:focus{
     width:60px;
 }
 .button{
-    width:100px !important;
-    box-shadow: 1px 1px 1px 0px black;
-    color:darkgreen;
+    width:120px !important;
+    box-shadow:0 1px 3px rgba(0,0,0,0.08),inset 0 -1px 4px rgba(151,159,175,0.2);
+    color:white;
     font-size: 16px;
-    border-radius: 1px;
-    background-color: lightgreen;
-    border:1px solid green !important;
+    border-radius: 2px;
+    cursor: pointer;
+    height: 35px;
+    background-color: #2ec866;
+    border:1px solid #2ec866 !important;
+    display: block;
+    
 }
-
+.button:hover{
+    box-shadow: 0px 0px 1px 1px darkgreen !important;
+}
 .readOnly{
     border:none !important;
     box-shadow: none !important;
 }
 .truck_timeline{
     margin:5px 0px;
+}
+.schedule_date{
+    margin-bottom: 20px;
+    
+}
+.truck_timeline{
+    margin-top: 10px;
+    
 }

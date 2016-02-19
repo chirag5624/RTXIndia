@@ -1,0 +1,22 @@
+{
+    "quotation_id": "6",
+    "details": [
+      {
+        "rating": "1",
+        "name_of_firm": "Gupta and co.",
+        "quote": "588",
+        "firm_id" :"2"
+      },{
+        "rating": "1",
+        "name_of_firm": "Gupta and co.",
+        "quote": "588",
+        "firm_id" :"5"
+      },
+        {
+        "rating": "1",
+        "name_of_firm": "Gupta and co.",
+        "quote": "588",
+        "firm_id" :"2"
+      }
+    ]
+  }
